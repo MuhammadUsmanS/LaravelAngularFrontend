@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//////////////////////////////////////////////////////// 
+
+// 
 import { JarwisService } from "../../Services/jarwis.service";
 import { TokenService } from "../../Services/token.service";
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-	public error = <any>[];
+	public error = <any> [];
 
 
 	public form = {
@@ -23,13 +24,13 @@ export class SignupComponent implements OnInit {
 		 password_confirmation: null,
 	};
 
-  constructor( private Jarwis: JarwisService ,
-               private Token: TokenService,
+  constructor( private jarwis: JarwisService ,
+               private token: TokenService,
                private router: Router ) { }
 
   onSubmit(){
  
-  	this.Jarwis.signup(this.form).subscribe(
+  	this.jarwis.signup(this.form).subscribe(
 
   		// data  => console.log(data),
       data  => this.handleResponse(data),
@@ -39,7 +40,7 @@ export class SignupComponent implements OnInit {
 
   handleResponse(data)
   {
-    this.Token.handle(data.access_token);
+    this.token.handle(data.access_token);
     this.router.navigateByUrl('/profile');
   }
 

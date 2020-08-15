@@ -17,8 +17,8 @@ export class NavbarComponent implements OnInit {
 
   constructor( 
 
-  		private Auth  : AuthService,
-  		private Token : TokenService,
+  		private auth  : AuthService,
+  		private token : TokenService,
   		private router: Router
 
   		 ) { }
@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-  	this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+  	this.auth.authStatus.subscribe(value => this.loggedIn = value);
 
   }
 
@@ -34,8 +34,8 @@ export class NavbarComponent implements OnInit {
   {	
   	event.preventDefault();   //aye pta ni ki krda a ?
  
-  	this.Token.remove();
-  	this.Auth.changeAuthStatus(false);
+  	this.token.remove();
+  	this.auth.changeAuthStatus(false);
   	this.router.navigateByUrl('/login');
   }		
 

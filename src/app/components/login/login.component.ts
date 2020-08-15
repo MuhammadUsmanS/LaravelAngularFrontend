@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
 
 	public error = null ;//custom
 
-  constructor( private Jarwis: JarwisService , 
-               private Token : TokenService ,
+  constructor( private jarwis: JarwisService , 
+               private token : TokenService ,
                private router: Router,
-               private Auth  : AuthService  ) { }
+               private auth  : AuthService  ) { }
 
   onSubmit()
   {
-  	this.Jarwis.login(this.form).subscribe(
+  	this.jarwis.login(this.form).subscribe(
 
       data  => this.handleResponse(data),
   		error => this.handleError(error)
@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data) 
   {
-    this.Token.handle(data.access_token);       // 1st set token 
-    this.Auth.changeAuthStatus(true);           // 2nd give status 
+    this.token.handle(data.access_token);       // 1st set token 
+    this.auth.changeAuthStatus(true);           // 2nd give status 
     this.router.navigateByUrl('/profile');      // 3rd navigate 
   }
 

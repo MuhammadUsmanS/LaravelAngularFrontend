@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { JarwisService } from "../../../Services/jarwis.service";
+import { SnotifyService } from 'ng-snotify';
+
 @Component({
   selector: 'app-request-reset',
   templateUrl: './request-reset.component.html',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestResetComponent implements OnInit {
 
-  constructor() { }
+  public form = {
+  	email: null 
+  };
+
+  constructor( 
+
+  	private jarwis: JarwisService,
+  	private notify: SnotifyService
+
+  	) { }
 
   ngOnInit(): void {
   }
+
+
+  onSubmit( )
+  {
+  	this.jarwis.sendResetPasswordLink(this.form).subscribe(
+
+  		data  => this.handleResponse(data),
+  		// data  => console.log(data),
+  		// error => console.log(error)
+  		error => this.notify.error(error.error.error),
+
+  		);
+  }
+
+
+  handleResponse(response)
+  {
+  	this.form.email = null ;
+  }
+
 
 }

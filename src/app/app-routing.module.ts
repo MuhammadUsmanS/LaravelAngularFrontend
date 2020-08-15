@@ -1,6 +1,6 @@
 
 import { NgModule } from '@angular/core';// import { CommonModule } from '@angular/common';
-/////////////////////////////////////////////////////////////////
+//
 import { Routes , RouterModule} from  '@angular/router' ; 
 
 import { LoginComponent } from './components/login/login.component';
@@ -19,8 +19,8 @@ import { AfterLoginService } from './Services/after-login.service';
 	 { path: 'signup',  component: SignupComponent,  canActivate: [BeforeLoginService]},
 	 { path: 'profile', component: ProfileComponent, canActivate: [AfterLoginService] },
 
-	 { path: 'request-reset-password', component: RequestResetComponent },
-	 { path: 'response-reset-password',component: ResponseResetComponent },
+	 { path: 'request-reset-password', component: RequestResetComponent, canActivate: [BeforeLoginService] },
+	 { path: 'response-reset-password',component: ResponseResetComponent, canActivate: [BeforeLoginService] },
 
 
 	];
