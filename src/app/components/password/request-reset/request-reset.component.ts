@@ -14,6 +14,8 @@ export class RequestResetComponent implements OnInit {
   	email: null 
   };
 
+  public error = null ; 
+
   constructor( 
 
   	private jarwis: JarwisService,
@@ -38,8 +40,9 @@ export class RequestResetComponent implements OnInit {
   }
 
 
-  handleResponse(response)
+  handleResponse(res)
   {
+  	// console.log(res);
   	this.form.email = null ;
   }
 
