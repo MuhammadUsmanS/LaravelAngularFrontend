@@ -10,6 +10,7 @@ import { SnotifyService } from 'ng-snotify';
 })
 export class RequestResetComponent implements OnInit {
 
+
   public form = {
   	email: null 
   };

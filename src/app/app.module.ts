@@ -38,14 +38,14 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SnotifyModule,
+    SnotifyModule
 
     /////////////////////////////////////////////// 
     
   ],
   providers: [JarwisService, TokenService, AuthService ,AfterLoginService, BeforeLoginService, 
 
-             { provide: 'SnotifyToastConfig', useValue: ToastDefaults},SnotifyService
+             { provide: 'SnotifyToastConfig', useValue: ToastDefaults }, SnotifyService
              
              ],
 
